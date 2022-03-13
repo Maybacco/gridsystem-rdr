@@ -102,7 +102,7 @@ local promptGroup
 function SetupPrompt(zone)
     promptGroup = GetRandomIntInRange(0, 0xffffff)
     Citizen.CreateThread(function()
-        local str = zone.hint or 'Esegui'
+        local str = zone.hint or ''
         currentPrompt = PromptRegisterBegin()
         PromptSetControlAction(currentPrompt, zone.control or Keys["G"])
         str = CreateVarString(10, 'LITERAL_STRING', str)
@@ -125,7 +125,7 @@ CreateThread(function ()
             if _zone and not _zone.mustExit then
 
                 if _zone.showPrompt or not _zone.show3D then
-                    local label  = CreateVarString(10, 'LITERAL_STRING', _zone.promptName or "Azioni")
+                    local label  = CreateVarString(10, 'LITERAL_STRING', _zone.promptName or "")
                     PromptSetActiveGroupThisFrame(promptGroup, label)
                     if PromptHasStandardModeCompleted(currentPrompt, false) then
                         print("None")
