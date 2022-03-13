@@ -1,8 +1,8 @@
 # Gridsystem
-Marker handling resource for FiveM
+Marker handling resource for 	~~FiveM~~ RedM
 
 This resource make it easy to handle markers in one single resource. Markers are registered within "chunks" and all the maths is done based on the chunk the player is in.
-It also has a permission system compatible with ESX job system, however you can easily edit the code to support other system/remove it.
+The first releases only let you use the StandardMode in the prompts, so you can't Mash or Hold. Right now it's also possible to add only a single prompt action.
 
 
 How to register a marker
