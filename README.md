@@ -13,8 +13,7 @@ First you create a table with the following params
 | `name`         | Unique name of the marker                                                                                                                                                          | string         | YES      |                              |
 | `pos`          | Position of the marker                                                                                                                                                             | vector3        | YES      |                              |
 | `scale`        | Scale of the marker                                                                                                                                                                | vector3        | NO       | ```vector3(1.5, 1.5, 1.5)``` |
-| `size`        | Size of the marker, the area where the user can trigger the action centered on pos.   
-                | vector3        | NO       | ```vector3(1.5, 1.5, 1.5)``` |
+| `size`        | Size of the marker, the area where the user can trigger the action centered on pos   | vector3        | NO       | ```vector3(1.5, 1.5, 1.5)``` |
 | `msg`          | Message on the top left  when inside the marker                                                                                                                                    | string         | NO       | `NO TEXT PROVIDED`           |
 | `drawDistance` | Distance when the marker start rendering                                                                                                                                           | number         | NO       | 15.0                         |
 | `control`      | Key to press to perform action                                                                                                                                                     | string  number | NO       | 'G'                          |
