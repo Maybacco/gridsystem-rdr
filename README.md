@@ -29,6 +29,9 @@ First you create a table with the following params
 | `onExit`       | Callback function called when exiting the marker                                                                                                                                   | function       | NO       | None                         |
 | `shouldBob`         | Indicates if the marker should bob (jump in place)                                                                                                | boolean         | NO       | false                           |
 | `shouldRotate`         | Indicates if the marker should show rotate on itself                                                                                                | boolean         | NO       | false                           |
+| `ped`         | Empty by itself, contains model and heading                                                                                                | table         | NO       | nil                           |
+| `ped.model`         | Model of the npc to spawn                                                                                                | string         | YES if ped is present       | nil                           |
+| `ped.heading`         | The heading of the spawned npc                                                                                                | float         | NO       | 90.0                           |
 
 Example:
 ```lua
