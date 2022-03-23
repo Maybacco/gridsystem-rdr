@@ -7,6 +7,8 @@ AddEventHandler("gridsystem:registerMarker", function (marker)
         return
     end
 
+    SpawnMarkerPed(marker)
+
     CheckMarkerJob(marker)
     local isRegistered, chunkId, index = IsMarkerAlreadyRegistered(marker.name)
     if isRegistered then
@@ -85,7 +87,12 @@ AddEventHandler("onResourceStop", function (resource)
             if isRegistered then
                 LogInfo(string.format("Removing Marker For Stopping of Resource %s: %s", resource, m.name))
                 RegisteredMarkers[chunkId][index] = nil
+                if (MarkerPeds[m.name]) then
+                    DeletePed(MarkerPeds[m.name])
+                end
             end
+
         end
     end
+
 end)

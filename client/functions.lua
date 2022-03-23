@@ -4,6 +4,7 @@ RegisterCommand("grid_log", function()
 end)
 LogError = function (invoker, text)
     if invoker then
+        if (not text) then text = "" end
         print("^1[FATAL ERROR] [" .. invoker .. "] " .. text)
     else
         print("^1[FATAL ERROR] " .. text)
@@ -84,6 +85,27 @@ CheckMarkerJob = function (marker)
         MarkerWithJob[marker.permission] = {}
     end
     table.insert(MarkerWithJob[marker.permission], marker)
+end
+
+SpawnMarkerPed = function (marker)
+    if not marker.ped then return end
+
+    local hashModel = GetHashKey(marker.ped.model) 
+    if IsModelValid(hashModel) then
+        RequestModel(hashModel)
+        while not HasModelLoaded(hashModel) do                
+            Citizen.Wait(100)
+        end
+    end
+    local npc = CreatePed(hashModel, marker.pos.x, marker.pos.y, marker.pos.z - 1.0, marker.ped.heading or 90.0, false, true, true, true)
+    Citizen.InvokeNative(0x283978A15512B2FE, npc, true) -- SetRandomOutfitVariation
+    SetEntityNoCollisionEntity(PlayerPedId(), npc, false)
+    SetEntityCanBeDamaged(npc, false)
+    SetEntityInvincible(npc, true)
+    Citizen.Wait(1000)
+    FreezeEntityPosition(npc, true) -- NPC can't escape
+    SetBlockingOfNonTemporaryEvents(npc, true) -- NPC can't be scared
+    MarkerPeds[marker.name] = npc
 end
 
 HasJob = function (marker)

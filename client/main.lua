@@ -10,6 +10,7 @@ local MarkersToCheck = {}
 RegisteredMarkers = {}
 MarkerWithJob = {}
 TempMarkerWithJob = {}
+MarkerPeds = {}
 CurrentJob = nil
 
 LetSleep = true
@@ -128,7 +129,6 @@ CreateThread(function ()
                     local label  = CreateVarString(10, 'LITERAL_STRING', _zone.promptName or "")
                     PromptSetActiveGroupThisFrame(promptGroup, label)
                     if PromptHasStandardModeCompleted(currentPrompt, false) then
-                        print("None")
                         local status, err = pcall(_zone.action)
                         if not status then
                             LogError(string.format("Error executing action for marker %s. Error: %s", _zone.name, err))
